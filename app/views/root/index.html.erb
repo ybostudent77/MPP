@@ -1,0 +1,15 @@
+<body style="background: black; color: chartreuse" >
+  <ul>
+    <li style="color: aqua"><%= link_to 'Doctors', doctors_path %></li>
+    <li style="color: aqua"><%= link_to 'Patients', patients_path %></li>
+    <li style="color: aqua"><%= link_to 'Departments', departments_path %></li>
+    <li style="color: aqua"><%= link_to 'Patient Cards', patient_cards_path %></li>
+    <li style="color: aqua"><%= link_to 'Specialization', specializations_path %></li>
+    <% if user_signed_in? %>
+      <div style="color: aqua; border: #2E2F30"> Welcome <%= current_user.email %> </div>
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= button_to "Sign in", new_user_session_path %>
+    <% end %>
+  </ul>
+</body>
