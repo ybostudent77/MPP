@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Patient cards</h1>
+<body id="patient_cards" style="background: black; color: chartreuse" >
+<%= form_with(url: patient_cards_path, method: :get) do |form| %>
+  <%= form.text_field :query, placeholder: 'Search patient cards' %>
+  <%= form.submit 'Search' %>
+<% end %>
+
+<div id="patient_cards" class="style_for_pages">
+  <% @patient_cards.each do |patient_card| %>
+    <%= render patient_card %>
+    <p>
+      <%= link_to "Show this patient card", patient_card %>
+    </p>
+  <% end %>
+
+  <%= will_paginate @patient_cards %>
+</div>
+
+<%= link_to "New patient card", new_patient_card_path %>
+
+<p>
+  Sort by:
+  <%= link_to 'Created at (asc)', { sort_field: 'created_at', sort_direction: 'asc' } %>
+  <%= link_to 'Created at (desc)', { sort_field: 'created_at', sort_direction: 'desc' } %>
+</p>
+</body>
